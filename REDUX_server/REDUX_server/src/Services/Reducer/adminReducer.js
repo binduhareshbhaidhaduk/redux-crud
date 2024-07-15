@@ -2,10 +2,11 @@
 import generateUniqueId from 'generate-unique-id';
 // import getData from 'service/Helper'
 import { getData, setData } from '../../components/Service/Helper';
+import { isLoading } from '../Action/adminAction';
 
 const initialState = {
-    products: getData('products'),
-    product: null,
+    books: [],
+    book: null,
     isLoading:false
 };
 
@@ -17,27 +18,27 @@ export const adminReducer = (state = initialState, action) => {
                 id: generateUniqueId({ length: 4, useLetters: false })
             };
             console.log(prd, 'helohjxfbje');
-            let storage = [...state.products, prd];
-            localStorage.setItem('products', JSON.stringify(storage));
+            let storage = [...state.books, prd];
+            localStorage.setItem('books', JSON.stringify(storage));
             return {
                 ...state,
-                products: storage,
+                books: storage,
                 isLoading:false
             }
 
         case 'SINGLEREC':
-            let singleRec=state.products.find(prd => prd.id === action.payload)            
-           
-            console.log('single', singleRec);
+            // let singleRec=state.books.find(prd => prd.id === action.payload)            
+
+            // console.log('single', singleRec);
             return {
                 ...state,
-                product: singleRec
+                book: action.payload
             }
         case 'UPDATED':
-            let storage2 = [...state.products];
+            let storage2 = [...state.books];
             let updatedpro = storage2.map((pro) => {
-                
-              if(pro.id == state.product.id){
+
+              if(pro.id == state.book.id){
                 return {
                     ...pro,
                     ...action.payload
@@ -47,22 +48,30 @@ export const adminReducer = (state = initialState, action) => {
               }
 
             })
-            setData('products',updatedpro);
+            setData('books',updatedpro);
             return {
                 ...state,
-                products: updatedpro,
-                product:null
+                books: updatedpro,
+                book:null
             }
-          
-        case 'DELETE':
-            const deletRec=state.products.filter(prd => prd.id !== action.payload)
 
-            setData('products',deletRec);
-            return {...state, products:deletRec}
+        case 'DELETE':
+            const deletRec=state.books.filter(prd => prd.id !== action.payload)
+
+            setData('books',deletRec);
+            return {...state, books:deletRec}
 
         case 'LOADING':
             return {...state, isLoading: true}
-        
+
+        case 'ADDPROASYNC':
+            return {
+                ...state,
+                books:action.payload,
+                book:null,
+                isLoading:false
+            }
+
         default:
             return state;
 
@@ -70,3 +79,4 @@ export const adminReducer = (state = initialState, action) => {
 };
 
 export default adminReducer;
+

@@ -5,26 +5,22 @@ import { Container, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-// import Row from 'react-bootstrap/Row';
-// import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router';
-// import { Link } from 'react-router-dom';
-// import { json } from 'react-router';
-// import { getData, setData } from '../Services/Helper';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProdectAsync, isLoading, myThunkFun } from '../../Services/Action/adminAction';
-function Createproduct() {
+import { addBookAsync } from '../../Services/Action/adminAction';
+function Createbook() {
     const [inputState, setInputState] = useState({
         id: '',
         title: '',
-        price: '',
-        categories: '',
-        description: '',
+        author: '',
+        genre: '',
+        py: ''
     });
 
     const { isLoading } = useSelector(state => state.adminReducer);
 
-    // const [myProduct, setmyProduct] = useState(getData('product'));
+
+    // const [myBook, setmyBook] = useState(getData('book'));
 
     const [isSubmit, setIsSubmit] = useState(false);
     const navigat = useNavigate();
@@ -41,10 +37,10 @@ function Createproduct() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        
-        dispatch(addProdectAsync(inputState))
+
+        dispatch(addBookAsync(inputState))
         setIsSubmit(true);
-        // navigat('/');
+        // navigat('/');    
 
     }
 
@@ -67,7 +63,7 @@ function Createproduct() {
 
                         <div className="col6 p-3">
                             <div className=' head '>
-                                <h5 className='text-white p-3'>New product</h5>
+                                <h5 className='text-white p-3'>New book</h5>
                             </div>
                             <Form onSubmit={handleSubmit} className='p-3 '>
                                 <Form.Control type="text" value={inputState.id} name='id' hidden />
@@ -80,22 +76,22 @@ function Createproduct() {
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridEmail" className='d-flex p-1 fs-6'>
                                     <Form.Label className='d-flex'>
-                                        Price
+                                        Author
                                     </Form.Label>
-                                    <Form.Control type="text" onChange={handleInput} value={inputState.price} name='price' />
+                                    <Form.Control type="text" onChange={handleInput} value={inputState.author} name='author' />
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridEmail" className='d-flex p-1 fs-6'>
                                     <Form.Label className='d-flex'>
-                                        Catagores
+                                        Genre
                                     </Form.Label>
-                                    <Form.Control type="text" onChange={handleInput} value={inputState.categories} name='categories' />
+                                    <Form.Control type="text" onChange={handleInput} value={inputState.genre} name='genre' />
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGridEmail" className='d-flex p-1 fs-6'>
                                     <Form.Label className='d-flex'>
-                                        Discription
+                                        Publication Year
                                     </Form.Label>
-                                    <Form.Control as="textarea" aria-label="With textarea" onChange={handleInput} value={inputState.description} name='description' />
+                                    <Form.Control as="textarea" aria-label="With textarea" onChange={handleInput} value={inputState.py} name='py' />
                                 </Form.Group>
 
                                 <Button variant="success" type='submit' disabled={isLoading}>
@@ -125,7 +121,7 @@ function Createproduct() {
     )
 }
 
-export default Createproduct
+export default Createbook
 
 
 

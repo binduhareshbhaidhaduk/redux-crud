@@ -2,11 +2,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './App.css'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home';
-import Editproduct from './components/Editproduct/Editproduct'
 
 
 import { Routes, Route } from 'react-router-dom';
-import Createproduct from './components/Createproduct/Createproduct';
+import EditBook from './components/Editproduct/Editbook';
+import Createbook from './components/Createproduct/Createbook';
 
 function App() {
 
@@ -15,8 +15,8 @@ function App() {
       <Header />
       <Routes>
         <Route  path="/" element={<Home />} />
-        <Route path="/create" element={<Createproduct />} />
-        <Route path="/edit/:id" element={<Editproduct />} />
+        <Route path="/create" element={<Createbook />} />
+        <Route path="/edit/:id" element={<EditBook />} />
       </Routes>
     </>
   )

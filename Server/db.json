@@ -1,4 +1,41 @@
 {
-    "product":[],
-    "use":[]
+  "product": [
+    {
+      "id": "6378",
+      "title": "reuy",
+      "author": "",
+      "genre": "",
+      "py": ""
+    },
+    {
+      "id": "1252",
+      "title": "fh",
+      "author": "",
+      "genre": "xb",
+      "py": ""
+    },
+    {
+      "id": "3775",
+      "title": "zsdtg",
+      "author": "",
+      "genre": "",
+      "py": ""
+    },
+    {
+      "id": "1512",
+      "title": "BINDU",
+      "author": "HG",
+      "genre": "RHD",
+      "py": "123"
+    }
+  ],
+  "book": [
+    {
+      "id": "2740",
+      "title": "the jungle",
+      "author": "",
+      "genre": "cartoon",
+      "py": ""
+    }
+  ]
 }
